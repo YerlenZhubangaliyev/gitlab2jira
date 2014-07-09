@@ -1,0 +1,27 @@
+{
+    "name": "gitlab2jira",
+    "version": "0.0.1",
+    "license": "MIT",
+    "main": ["build.js", "index.html"],
+    "dependencies": {
+        "r.js": "*",
+        "jquery": "2.x",
+        "underscore": "1.6.*",
+        "backbone": "1.1.*",
+        "backbone-mediator": "*",
+        "requirejs": "*",
+        "requirejs-text": "*",
+        "require-css": "*",
+        "bootstrap": "3.2.x",
+        "pace": "*"
+    },
+    "ignore": [
+        "node_modules",
+        "bower_components",
+        ".gitignore",
+        "build",
+        "bin",
+        "test",
+        "src"
+    ]
+}

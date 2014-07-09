@@ -1,0 +1,145 @@
+<div class="container">
+    <div class="row">
+        <div class="page-header clearfix">
+            <h4>gitlab2jira &ndash;&gt; JSON (JIM)</h4>
+        </div>
+    </div>
+    <div class="row">
+        <div class="panel panel-primary">
+            <div class="panel-heading clearfix">JSON export</div>
+            <div class="panel-body no-padding clearfix">
+                <ul class="nav nav-tabs">
+                    <li class="active">
+                        <a href="#request" data-toggle="tab">
+                            <span>(1) Request settings</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="#params" data-toggle="tab">
+                            <span>(2) GitLab &ndash;&gt; JIRA mapping</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="#result" data-toggle="tab">
+                            <span>(3) JSON Result</span>
+                        </a>
+                    </li>
+                </ul>
+                <form class="form" id="request_form">
+                    <div id="myTabContent" class="tab-content">
+                        <div class="tab-pane fade active in" id="request">
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <label>GitLab project ID:</label>
+                                    <input class="form-control" type="text" name="gl_pid" placeholder="namespace/project" required=""/>
+                                </div>
+                                <div class="form-group">
+                                    <label>GitLab private token:</label>
+                                    <input class="form-control" type="text" name="gl_pt" placeholder="Your Token" required="" />
+                                </div>
+                                <div class="divider"></div>
+                                <div class="form-group">
+                                    <label>JIRA project Name:</label>
+                                    <input class="form-control" type="text" name="jr_name" placeholder="Awesome project" required="" />
+                                </div>
+                                <div class="form-group">
+                                    <label>JIRA project Key:</label>
+                                    <input class="form-control" type="text" name="jr_key" placeholder="PROJECT" required="" />
+                                </div>
+                            </div>
+                        </div>
+                        <div class="tab-pane fade" id="params">
+                            <div class="col-md-4">
+                                <h4>Gl Labels to JIRA Issue Type</h4>
+                                <div class="form-group">
+                                    <label>*DEFAULT TYPE <span class="badge">GL</span></label>
+                                    <input class="form-control" type="text" name="label.type._" value="Bug"/>
+                                </div>
+                                <div class="form-group">
+                                    <label>bug <span class="badge">GL</span></label>
+                                    <input class="form-control" type="text" name="label.type.bug" value="Bug"/>
+                                </div>
+                                <div class="form-group">
+                                    <label>chore <span class="badge">GL</span></label>
+                                    <input class="form-control" type="text" name="label.type.chore" value="Task"/>
+                                </div>
+                                <div class="form-group">
+                                    <label>feature <span class="badge">GL</span></label>
+                                    <input class="form-control" type="text" name="label.type.feature" value="New Feature"/>
+                                </div>
+                                <div class="form-group">
+                                    <label>fr <span class="badge">GL</span></label>
+                                    <input class="form-control" type="text" name="label.type.fr" value="New Feature"/>
+                                </div>
+                                <div class="form-group">
+                                    <label>imprv <span class="badge">GL</span></label>
+                                    <input class="form-control" type="text" name="label.type.imprv" value="Improvement"/>
+                                </div>
+                                <div class="form-group">
+                                    <label>improvement <span class="badge">GL</span></label>
+                                    <input class="form-control" type="text" name="label.type.improvement" value="Improvement"/>
+                                </div>
+                                <div class="form-group">
+                                    <label>nf <span class="badge">GL</span></label>
+                                    <input class="form-control" type="text" name="label.type.nf" value="New Feature"/>
+                                </div>
+                                <div class="form-group">
+                                    <label>refactor <span class="badge">GL</span></label>
+                                    <input class="form-control" type="text" name="label.type.refactor" value="Improvement"/>
+                                </div>
+                                <div class="form-group">
+                                    <label>task <span class="badge">GL</span></label>
+                                    <input class="form-control" type="text" name="label.type.task" value="Task"/>
+                                </div>
+                            </div>
+                            <div class="col-md-4">
+                                <h4>Gl Labels (Priority) to JIRA Issue Priority</h4>
+                                <div class="form-group">
+                                    <label>*DEFAULT PRIORITY <span class="badge">GL</span></label>
+                                    <input class="form-control" type="text" name="label.priority._" value="Major"/>
+                                </div>
+                                <div class="form-group">
+                                    <label>Critical <span class="badge">GL</span></label>
+                                    <input class="form-control" type="text" name="label.priority.(Priority) - Critical" value="Critical"/>
+                                </div>
+                                <div class="form-group">
+                                    <label>Normal <span class="badge">GL</span></label>
+                                    <input class="form-control" type="text" name="label.priority.(Priority) - Normal" value="Minor"/>
+                                </div>
+                                <div class="form-group">
+                                    <label>Trivial <span class="badge">GL</span></label>
+                                    <input class="form-control" type="text" name="label.priority.(Priority) - Trivial" value="Trivial"/>
+                                </div>
+                            </div>
+                            <div class="col-md-4">
+                                <h4>Gl Issue State to JIRA Issue Status</h4>
+                                <div class="form-group">
+                                    <label>opened <span class="badge">GL</span></label>
+                                    <input class="form-control" type="text" name="issue.status.opened" value="Open"/>
+                                </div>
+                                <div class="form-group">
+                                    <label>reopened <span class="badge">GL</span></label>
+                                    <input class="form-control" type="text" name="issue.status.reopened" value="Reopened"/>
+                                </div>
+                                <div class="form-group">
+                                    <label>closed <span class="badge">GL</span></label>
+                                    <input class="form-control" type="text" name="issue.status.closed" value="Closed"/>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="tab-pane fade result" id="result">
+                            <div class="form-group">
+                                <button type="submit" class="btn btn-primary">Get Issues and comments</button>
+                            </div>
+                            <div class="form-group">
+                                <label>JSON result:</label>
+                                <textarea class="form-control" placeholder="JSON result" id="json_result" rows="10"></textarea>
+                            </div>
+                        </div>
+                    </div>
+                </form>
+            </div>
+            <div class="panel-footer status text-primary"></div>
+        </div>
+    </div>
+</div>
